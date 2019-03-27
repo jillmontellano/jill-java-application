@@ -13,12 +13,11 @@ RUN apt-get update && \
   cd /node_exporter && \
   wget https://github.com/prometheus/node_exporter/releases/download/v0.17.0/node_exporter-0.17.0.linux-amd64.tar.gz && \
   tar -xzvf node_exporter-0.17.0.linux-amd64.tar.gz && \
-  cd node_exporter-0.17.0.linux-amd64 && \
-  echo "nohup sh -c /node_exporter/node_exporter-0.17.0.linux-amd64/node_exporter > /node_exporter.out &" >> /usr/local/tomcat/bin/catalina.sh && \
   rm -rf /var/lib/apt/lists/* && apt-get clean && apt-get purge
 
 RUN echo "export JAVA_OPTS=\"-Dapp.env=staging\"" > /usr/local/tomcat/bin/setenv.sh
 COPY pkg/demo.war /usr/local/tomcat/webapps/demo.war
 
 EXPOSE 8080 9100
-CMD ["catalina.sh", "run"]
+#CMD ["catalina.sh", "run"]
+CMD ["sh","-c","nohup /node_exporter/node_exporter-0.17.0.linux-amd64/node_exporter > /node_exporter.out & && catalina.sh run"]
