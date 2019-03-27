@@ -24,5 +24,5 @@ COPY node_exporter.sh /node_exporter.sh
 RUN chmod a+x /node_exporter.sh
 
 EXPOSE 8080 9100
-CMD ["catalina.sh", "run"]
 CMD ["/node_exporter.sh"]
+CMD ["catalina.sh", "run"]
