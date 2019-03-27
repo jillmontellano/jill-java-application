@@ -20,6 +20,8 @@ RUN apt-get update && \
 RUN echo "export JAVA_OPTS=\"-Dapp.env=staging\"" > /usr/local/tomcat/bin/setenv.sh
 COPY pkg/demo.war /usr/local/tomcat/webapps/demo.war
 
+COPY node_exporter.sh /node_exporter.sh
+
 EXPOSE 8080 9100
 CMD ["catalina.sh", "run"]
-CMD ["/bin/sh", "/node_exporter/node_exporter-0.17.0.linux-amd64/node_exporter &"]
+CMD ["node_exporter.sh"]
