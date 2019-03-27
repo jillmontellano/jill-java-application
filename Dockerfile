@@ -13,7 +13,7 @@ RUN apt-get update && \
   cd /node_exporter && \
   wget https://github.com/prometheus/node_exporter/releases/download/v0.17.0/node_exporter-0.17.0.linux-amd64.tar.gz && \
   tar -xzvf node_exporter-0.17.0.linux-amd64.tar.gz && \
-  echo "# !/bin/bash \n nohup /node_exporter/node_exporter-0.17.0.linux-amd64/node_exporter > /node_exporter.out &" > /node_exporter.sh && \
+  echo "# !/bin/bash \n nohup /node_exporter/node_exporter-0.17.0.linux-amd64/node_exporter >/dev/null &" > /node_exporter.sh && \
   chmod 777 /node_exporter.sh && \
   rm -rf /var/lib/apt/lists/* && apt-get clean && apt-get purge
 
