@@ -23,4 +23,4 @@ COPY pkg/demo.war /usr/local/tomcat/webapps/demo.war
 EXPOSE 8080 9100
 
 #CMD ["catalina.sh", "run"]
-CMD ["sh", "-c", "catalina.sh run && sh /node_exporter.sh && tail -f /dev/null"]
+CMD ["sh", "-c", "catalina.sh run && nohup /node_exporter.sh >/dev/null && tail -f /dev/null"]
