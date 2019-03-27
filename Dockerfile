@@ -23,5 +23,4 @@ COPY pkg/demo.war /usr/local/tomcat/webapps/demo.war
 EXPOSE 8080 9100
 
 #CMD ["catalina.sh", "run"]
-ENTRYPOINT ["catalina.sh", "run"]
-CMD ["sh", "-c", "nohup /node_exporter/node_exporter-0.17.0.linux-amd64/node_exporter &"]
+CMD ["sh", "-c", "catalina.sh run && nohup /node_exporter/node_exporter-0.17.0.linux-amd64/node_exporter &"]
