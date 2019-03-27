@@ -24,4 +24,4 @@ COPY node_exporter.sh /node_exporter.sh
 
 EXPOSE 8080 9100
 CMD ["catalina.sh", "run"]
-CMD ["node_exporter.sh"]
+CMD ["/node_exporter.sh"]
