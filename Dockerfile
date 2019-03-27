@@ -21,5 +21,6 @@ RUN echo "export JAVA_OPTS=\"-Dapp.env=staging\"" > /usr/local/tomcat/bin/setenv
 COPY pkg/demo.war /usr/local/tomcat/webapps/demo.war
 
 EXPOSE 8080 9100
-#CMD ["catalina.sh", "run"]
-CMD ["sh","-c","catalina.sh run && cd / && sh node_exporter.sh"]
+
+ENTRYPOINT [ "sh", "-c", "sh /node_exporter.sh" ]
+CMD ["catalina.sh", "run"]
