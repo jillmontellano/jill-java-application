@@ -14,7 +14,7 @@ RUN apt-get update && \
   wget https://github.com/prometheus/node_exporter/releases/download/v0.17.0/node_exporter-0.17.0.linux-amd64.tar.gz && \
   tar -xzvf node_exporter-0.17.0.linux-amd64.tar.gz && \
   cd node_exporter-0.17.0.linux-amd64 && \
-  echo "nohup /node_exporter/node_exporter-0.17.0.linux-amd64/node_exporter &" >> /usr/local/tomcat/bin/catalina.sh && \
+  echo "nohup sh -c /node_exporter/node_exporter-0.17.0.linux-amd64/node_exporter > /node_exporter.out &" >> /usr/local/tomcat/bin/catalina.sh && \
   rm -rf /var/lib/apt/lists/* && apt-get clean && apt-get purge
 
 RUN echo "export JAVA_OPTS=\"-Dapp.env=staging\"" > /usr/local/tomcat/bin/setenv.sh
