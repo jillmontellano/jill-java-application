@@ -20,5 +20,4 @@ COPY pkg/demo.war /usr/local/tomcat/webapps/demo.war
 
 EXPOSE 8080 9100
 
-#CMD ["catalina.sh", "run"]
 CMD ["sh", "-c", "catalina.sh start && /node_exporter/node_exporter-0.17.0.linux-amd64/node_exporter"]
